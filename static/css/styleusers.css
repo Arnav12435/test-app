@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url('bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: animateBg 5s linear infinite;
+}
+
+@keyframes animateBg {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.login-box {
+    position: relative;
+    width: 700px; /* wider for table */
+    max-width: 90%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 40px;
+    backdrop-filter: blur(15px);
+    color: #fff;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+h2 {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+    font-weight: 500;
+}
+
+thead tr {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+thead th {
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+tbody td {
+    padding: 10px 8px;
+    font-size: 0.95em;
+    color: #eee;
+    word-break: break-word;
+}
+
+a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media(max-width: 768px) {
+    .login-box {
+        width: 95%;
+        padding: 20px;
+    }
+
+    thead th, tbody td {
+        font-size: 0.85em;
+        padding: 8px 6px;
+    }
+}

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: url('bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: animateBg 5s linear infinite;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px 20px;
+}
+
+@keyframes animateBg {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.dashboard-box {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1000px;
+    overflow-x: auto;
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.user-table th, .user-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.user-table th {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.user-table tr:last-child td {
+    border-bottom: none;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    margin: 2px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-btn.promote {
+    background: #28a745;
+    color: #fff;
+}
+
+.action-btn.promote:hover {
+    background: #218838;
+}
+
+.action-btn.demote {
+    background: #ffc107;
+    color: #000;
+}
+
+.action-btn.demote:hover {
+    background: #e0a800;
+}
+
+.action-btn.delete {
+    background: #dc3545;
+    color: #fff;
+}
+
+.action-btn.delete:hover {
+    background: #c82333;
+}
+
+@media(max-width: 768px) {
+    .dashboard-box {
+        padding: 20px;
+    }
+
+    .user-table th, .user-table td {
+        font-size: 0.9em;
+        padding: 10px 8px;
+    }
+
+    .action-btn {
+        font-size: 0.9em;
+        padding: 5px 10px;
+    }
+}
