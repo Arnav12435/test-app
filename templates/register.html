@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/stylereg.css') }}">
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 2px;
+    }
+    .input-box {
+      margin-bottom: 20px;
+    }
+    .file-upload {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="login-box">
+      <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <h2>Register</h2>
+
+        
+        <div class="input-box">
+          <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+          <input type="text" name="username" value="{{ form.username.data or '' }}" required>
+          <label>Username</label>
+          {% for error in form.username.errors %}
+            <div class="error">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        
+        <div class="input-box">
+          <input type="text" name="first_name" value="{{ form.first_name.data or '' }}" required>
+          <label>First Name</label>
+           {% for error in form.first_name.errors %}
+            <div class="error">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+  
+        <div class="input-box">
+          <input type="text" name="last_name" value="{{ form.last_name.data or '' }}" required>
+          <label>Last Name</label>
+          {% for error in form.last_name.errors %}
+            <div class="error">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        
+        <div class="input-box">
+          <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+          <input type="email" name="email" value="{{ form.email.data or '' }}" required>
+          <label>Email</label>
+           {% for error in form.email.errors %}
+            <div class="error">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        
+        <div class="input-box">
+          <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+          <input type="password" name="password" value="{{ form.password.data or '' }}" required>
+          <label>Password</label>
+          {% for error in form.password.errors %}
+            <div class="error">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        
+        <div class="input-box">
+          <input type="text" name="phone_number" value="{{ form.phone_number.data or '' }}" required>
+          <label>Phone Number</label>
+           {% for error in form.phone_number.errors %}
+            <div class="error">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        
+        <div class="file-upload">
+          <label for="photo">Upload Photo</label>
+          {{ form.photo(class="form-input", id="photo") }}
+           {% for error in form.photo.errors %}
+            <div class="error">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        
+        <button type="submit">Register</button>
+
+        <!-- Login Link -->
+        <div class="register-link">
+          <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
+

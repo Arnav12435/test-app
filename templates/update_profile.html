@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleupdate.css') }}">
+</head>
+<body>
+<section>
+    <div class="login-box">
+        <form method="POST">
+            <h2>Update Profile</h2>
+            {{ form.hidden_tag() }}
+            
+            <div class="input-box">
+                {{ form.password }}
+                <label>New Password (leave blank to keep existing)</label>
+            </div>
+
+            <div class="input-box">
+                {{ form.email }}
+                <label>Email</label>
+            </div>
+
+            <div class="input-box">
+                {{ form.phone_number }}
+                <label>Phone Number</label>
+            </div>
+
+            {{ form.submit(class="button") }}
+        </form>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registered Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleusers.css') }}" />
+</head>
+<body>
+    <section>
+        <div class="login-box">
+            <h2>Registered Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Password (Hashed)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.phone_number }}</td>
+                        <td>{{ user.password }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+        </div>
+    </section>
+</body>
+</html>

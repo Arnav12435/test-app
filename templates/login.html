@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <section>
+    <div class="login-box">
+      <form action="{{ url_for('login') }}" method="POST">
+        {{ form.hidden_tag() }}
+        <h2>Login</h2>
+
+        <!-- Username Field -->
+        <div class="input-box">
+          <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+         <!-- <input type="text" name="username" value="{{ form.username.data }}" required>-->
+          <input type="text" name="username" value="{{ form.username.data or '' }}" required>
+          <label>Username</label>
+        </div>
+
+        <!-- Password Field -->
+        <div class="input-box">
+          <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+          <input type="password" name="password" required>
+          <label>Password</label>
+        </div>
+
+        <!-- Remember Me -->
+        <div class="remember-forgot">
+          <label>
+            {{ form.remember }} Remember me
+          </label>
+          <p><a href="{{ url_for('forgot_password') }}">Forgot Password?</a></p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Login</button>
+
+        <!-- Register Link -->
+        <div class="register-link">
+          <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>  
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylemindash.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section>
+        <div class="dashboard-box">
+            <h2>Welcome, Admin {{ current_user.username }}</h2>
+            <h3>Registered Users</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Admin</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.phone_number }}</td>
+                            <td>{{ 'Yes' if user.is_admin else 'No' }}</td>
+                            <td>
+                                {% if user.id != current_user.id %}
+                                    {% if not user.is_admin %}
+                                        <form action="{{ url_for('promote_user', user_id=user.id) }}" method="post" style="display:inline;">
+                                            <button type="submit">Promote</button>
+                                        </form>
+                                    {% else %}
+                                        <form action="{{ url_for('demote_user', user_id=user.id) }}" method="post" style="display:inline;">
+                                            <button type="submit">Demote</button>
+                                        </form>
+                                    {% endif %}
+                                    <form action="{{ url_for('delete_user', user_id=user.id) }}" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                {% else %}
+                                    <span class="self-badge">(You)</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
