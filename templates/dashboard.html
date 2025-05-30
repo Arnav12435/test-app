@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styledash.css') }}">
+</head>
+<body>
+  <section>
+    <div class="dashboard-box">
+       {% if user.photo %}
+        <div class="profile-photo">
+          <img src="{{ url_for('static', filename='uploads/'~ user.photo) }}" alt="Profile Photo">
+        </div>
+      {% endif %}
+      <h2>Welcome, {{ user.username }}!</h2>
+      <div class="info-box">
+        
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phone_number }}</p>
+      </div>
+      <div class="button-group">
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+        <a href="{{ url_for('update_profile') }}" class="btn">Edit Profile</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
